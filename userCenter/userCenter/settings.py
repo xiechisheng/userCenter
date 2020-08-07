@@ -25,7 +25,7 @@ SECRET_KEY = '*ah86u9i9oqviyq6hw_od@id8yz)cr!ups=-3hhdqnk0jm7ruj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -73,14 +74,65 @@ WSGI_APPLICATION = 'userCenter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'uc',
+        "USER": "root",
+        "PASSWORD": "netsin",
+        "HOST": "58.251.34.29",
+        "PORT": "3306",
     }
 }
 
 
+CACHES = {
+          "default": {
+                      "BACKEND": "django_redis.cache.RedisCache",
+                      "LOCATION": "redis://:netsin@127.0.0.1:6379/1",
+                      "OPTIONS": {
+                                  "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                                 },
+                     },
+         }
+
+
+
+LOGGING = {
+           "version": 1,
+           "disable_existing_loggers": False,
+
+           "formatters": {
+                          "standard": {
+                                       "format": "[%(asctime)s] [%(levelname)s] %(message)s"
+                                      },
+                         },
+
+           "handlers": {
+                        "default": {
+                                    "level": "DEBUG",
+                                    "class": "logging.handlers.RotatingFileHandler",
+                                    "filename": "/tmp/uc.log",
+                                    "maxBytes": 1024 * 1024 * 50,
+                                    "backupCount": 0,
+                                    "formatter": "standard",
+                                   },
+                       },
+
+           "loggers": {
+                       "hyjk": {
+                               "handlers": ["default"],
+                               "level": "DEBUG",
+                               "propagate": True,
+                              },
+                      },
+          }
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
