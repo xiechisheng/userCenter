@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dcdb6e4f-6abf-41a7-b92d-a47b7f8bf13d" name="uc">
+        <fileTransfer rootFolder="/home/netsin/userCenter" accessType="SFTP" host="58.251.34.29" port="22" sshConfigId="48082c4a-4b82-4a82-b5ea-eb7084a0b760" sshConfig="netsin@58.251.34.29:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

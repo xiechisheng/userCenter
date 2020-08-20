@@ -86,20 +86,21 @@ DATABASES = {
         'NAME': 'uc',
         "USER": "root",
         "PASSWORD": "netsin",
-        "HOST": "58.251.34.29",
+        "HOST": "10.0.0.130",
         "PORT": "3306",
     }
 }
 
 
 CACHES = {
-          "default": {
-                      "BACKEND": "django_redis.cache.RedisCache",
-                      "LOCATION": "redis://:netsin@127.0.0.1:6379/1",
-                      "OPTIONS": {
-                                  "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                                 },
-                     },
+        "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://10.0.0.130:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "netsin",
+        },
+    },
          }
 
 
@@ -122,6 +123,7 @@ LOGGING = {
                                     "maxBytes": 1024 * 1024 * 50,
                                     "backupCount": 0,
                                     "formatter": "standard",
+                                    "encoding": "utf-8",
                                    },
                        },
 
@@ -130,6 +132,7 @@ LOGGING = {
                                "handlers": ["default"],
                                "level": "DEBUG",
                                "propagate": True,
+                                "encoding": "utf-8",
                               },
                       },
           }
@@ -170,3 +173,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TOKEN_TIME_OUT = 3600 * 24
+VC_TOKEN_TIME = 3600 * 12

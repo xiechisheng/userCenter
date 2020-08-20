@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api import user as UserApi
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("api/user/login", UserApi.userLogin, name="userLogin"),
+    path("api/user/logout", UserApi.userLogout, name="userLogout"),
+    path("api/user/add", UserApi.userInfoAdd, name="userInfoAdd"),
+    path("api/user/batch/add", UserApi.userInfoBatchAdd, name="userInfoBatchAdd"),
+    path("api/user/modify", UserApi.userInfoModify, name="userInfoModify"),
+    path("api/user/query", UserApi.userInfoQuery, name="userInfoQuery"),
+    path("api/user/delete", UserApi.userInfoDelete, name="userInfoDelete"),
+    path("api/user/registered", UserApi.userAccountRegistered, name="userAccountRegistered"),
 ]
